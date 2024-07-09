@@ -183,12 +183,12 @@ a {
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  padding: 3.2rem 1rem;
+  margin-top: 5rem;
+  padding: 1rem;
   /* background-color: var(--text-clr); */
   color: var(--text-clr);
   border: 0.2rem solid var(--text-clr);
-  font-size: 1.8rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s linear;
 }
@@ -273,3 +273,4 @@ a:hover img {
 h1  {
   margin-left: 30px;
 }
+

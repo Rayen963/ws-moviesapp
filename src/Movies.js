@@ -1,26 +1,36 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "./Context";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 const movie = ({id}) => {
+  const movieFound = movie.find(movie => movie.id === Number(id))
+  
+
   return(
     <div className="movie">
-      {movie.map((movie,index) =>(
-        <MovieCard key={index} {...movie}/>
+      {movie.map((movie,index) => (
+        <Link key={index} to={"/movie"}>
+          <MovieCard  {...movie}/>
+        </Link>
 
       )
       )}
     </div>
+    
   );
 }
 const Movies = ({movies, titleFilter, ratingFilter}) => {
   const { movie, isLoading } = useGlobalContext();
   // const [movies, setMovies] = useState([
+   // {movie.map((movie,index) => (
+//  )
+// )}
   //   {id: Math.random, title: "Titanic", posterURL: "https://m.media-amazon.com/images/I/71uoicxpqoS._SL1500_.jpg"},
   //   {id: Math.random, title: "Bad Boys", posterURL:"https://m.media-amazon.com/images/I/71dCnv9nohL._AC_UF1000,1000_QL80_.jpg"},
   //   {id: Math.random, title: "John Wick", posterURL:"https://m.media-amazon.com/images/I/71ucSvBl6pL._AC_UF894,1000_QL80_.jpg"},
   // ]) 
+  // `/${movie.title}`
 
   if(isLoading) {
     return(
@@ -42,9 +52,9 @@ const Movies = ({movies, titleFilter, ratingFilter}) => {
             <div class="card" >
             <h1 key={movie.id}>{movie.title}</h1>
             <img src={movie.posterURL} alt={movie.title} />
-            <h3 key={movie.title}>{movie.description}</h3>
+            
             <Link to={`/movie/${movie.id}`} >
-            <button class="btn btn-primary">Go somewhere</button>
+            <button class="btn btn-primary">Check details</button>
             </Link>
 
               </div>
@@ -53,7 +63,15 @@ const Movies = ({movies, titleFilter, ratingFilter}) => {
           )          
         })
       }
-      {/* {movie.map((curMovie) => {
+      {/*
+      <h3>Description: "{movieFound.description}"</h3>
+            <h4>Rating: "{movieFound.rating}"</h4>
+            <h4>Released: "{movieFound.released}"</h4>
+      
+      
+      
+      
+      {movie.map((curMovie) => {
         const {imdbID, Title, Poster} = curMovie;
         const movieName = Title.substring(0, 15);
       return (

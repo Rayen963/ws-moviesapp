@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const AddMovie = ({setMovies, movies}) => {
     const [title, setTitle] = useState("")
